@@ -139,4 +139,154 @@ document.addEventListener('DOMContentLoaded', function() {
                            `*Customer Details:*` + `\n` +
                            `• Name: ${formData.name}` + `\n` +
                            `• Phone: ${formData.phone}` + `\n` +
-                           `• Postcode: ${formData.postcode}` + `\
+                           `• Postcode: ${formData.postcode}` + `\n` +
+                           (formData.email !== 'Not provided' ? `• Email: ${formData.email}\n` : '') + `\n` +
+                           `*Project Details:*` + `\n` +
+                           `• Service: ${serviceNames[formData.service] || formData.service}` + `\n` +
+                           `• Area: ${formData.size} sq ft` + `\n` +
+                           (formData.description !== 'Not provided' ? `• Notes: ${formData.description.substring(0, 100)}${formData.description.length > 100 ? '...' : ''}\n` : '') + `\n` +
+                           `📍 Birmingham Area` + `\n` +
+                           `_This message was sent from the Mr. Driveways website._`;
+
+            // Encode message for URL
+            const encodedMsg = encodeURIComponent(message);
+            const phoneNumber = '447883555131'; // Your WhatsApp number
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMsg}`, '_blank');
+            
+            // Optional: Show confirmation
+            setTimeout(() => {
+                alert('WhatsApp opened! If the app didn\'t open, please check that WhatsApp is installed on your device.');
+            }, 500);
+        });
+    }
+
+    // ==================== FORM SUBMISSION ====================
+    const quoteForm = document.getElementById('quoteForm');
+    
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#28a745';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill all required fields.');
+                return;
+            }
+            
+            // Show success message
+            const name = this.querySelector('[name="name"]').value;
+            alert(`Thank you ${name}! Your FREE quote request has been submitted. We'll contact you within 24 hours.`);
+            
+            // Optional: Reset form after successful submission
+            // this.reset();
+            // if (resultDisplay) resultDisplay.textContent = '';
+            
+            // In a real application, you would send data to your server here
+            // Example using fetch():
+            /*
+            const formData = new FormData(this);
+            fetch('/api/submit-quote', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Quote request submitted successfully!');
+                this.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request. Please try again.');
+            });
+            */
+        });
+    }
+
+    // ==================== SMOOTH SCROLLING ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    document.body.style.overflow = '';
+                }
+                
+                // Calculate scroll position
+                const navHeight = document.querySelector('.nav').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navHeight - 20;
+                
+                // Smooth scroll
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ==================== FORM INPUT VALIDATION STYLING ====================
+    const formInputs = document.querySelectorAll('#quoteForm input, #quoteForm select, #quoteForm textarea');
+    
+    formInputs.forEach(input => {
+        // Add focus/blur styling
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#0066ff';
+            this.style.boxShadow = '0 0 0 3px rgba(0, 102, 255, 0.1)';
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.value.trim() === '' && this.hasAttribute('required')) {
+                this.style.borderColor = '#dc3545';
+                this.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
+            } else if (this.value.trim() !== '') {
+                this.style.borderColor = '#28a745';
+                this.style.boxShadow = '0 0 0 3px rgba(40, 167, 69, 0.1)';
+            } else {
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
+            }
+        });
+        
+        // Real-time validation for number input
+        if (input.type === 'number' && input.id === 'projectSize') {
+            input.addEventListener('input', function() {
+                const value = parseFloat(this.value);
+                if (isNaN(value) || value < 0) {
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+        }
+    });
+
+    // ==================== INITIALIZATION MESSAGE ====================
+    console.log('All features initialized: Mobile menu, Area calculator, WhatsApp button, Form validation');
+});

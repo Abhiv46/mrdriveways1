@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr. Driveways – Concrete Driveway Experts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header / Hero -->
+    <header class="hero">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Mr. Driveways Logo" height="40">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">सेवाएँ</a></li>
+                <li><a href="#quote">कोट प्राप्त करें</a></li>
+                <li><a href="#contact">संपर्क</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content container">
+            <h1>बेहतर कंक्रीट ड्राइववे<br>आपके घर के लिए</h1>
+            <p>टिकाऊ, सुंदर और तेज़ इंस्टॉलेशन।</p>
+            <a href="#quote" class="btn-primary">कोट माँगें</a>
+        </div>
+    </header>
+
+    <!-- TikTok वीडियो गैलरी -->
+    <section id="tiktok" class="section container">
+        <h2>हमारी TikTok फ़ीड</h2>
+
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mr.driveways/video/7575088020613909782"
+            data-video-id="7575088020613909782"
+            style="max-width:605px;min-width:325px;">
+            <section>Loading…</section>
+        </blockquote>
+
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mr.driveways/video/7577480190612229398"
+            data-video-id="7577480190612229398"
+            style="max-width:605px;min-width:325px;">
+            <section>Loading…</section>
+        </blockquote>
+
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mr.driveways/video/7575629470640508182"
+            data-video-id="7575629470640508182"
+            style="max-width:605px;min-width:325px;">
+            <section>Loading…</section>
+        </blockquote>
+
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mr.driveways/video/7569938086126308630"
+            data-video-id="7569938086126308630"
+            style="max-width:605px;min-width:325px;">
+            <section>Loading…</section>
+        </blockquote>
+
+        <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mr.driveways/video/7569682641276914966"
+            data-video-id="7569682641276914966"
+            style="max-width:605px;min-width:325px;">
+            <section>Loading…</section>
+        </blockquote>
+
+        <script async src="https://www.tiktok.com/embed.js"></script>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section bg-light container">
+        <h2>हमारी सेवाएँ</h2>
+        <div class="cards">
+            <article class="card"><h3>कस्टम ड्राइववे प्रिंट</h3><p>रंग, पैटर्न और टेक्सचर में पूरी लचीलापन।</p></article>
+            <article class="card"><h3>पैटियो & वॉकवे</h3><p>बाग‑बगीचे के साथ सहज मिलान।</p></article>
+            <article class="card"><h3>मरम्मत & रीफ़िनिश</h3><p>दरारें ठीक करें, पुरानी सतह को नया रूप दें।</p></article>
+        </div>
+    </section>
+
+    <!-- Quote Form (WhatsApp) -->
+    <section id="quote" class="section container">
+        <h2>फ़्री कोट प्राप्त करें</h2>
+        <form id="quoteForm" class="form">
+            <label>नाम<input type="text" name="name" required></label>
+            <label>ई‑मेल<input type="email" name="email" required></label>
+            <label>फ़ोन<input type="tel" name="phone" required></label>
+            <label>प्रोजेक्ट आकार (sq ft)<input type="number" name="size" min="0" required></label>
+            <label>पैटर्न<select name="pattern">
+                <option value="plain">सादा</option>
+                <option value="geometric">ज्यामितीय</option>
+                <option value="custom">कस्टम</option>
+            </select></label>
+
+            <button type="button" id="whatsappBtn" class="btn-primary">
+                WhatsApp पर भेजें
+            </button>
+        </form>
+    </section>
+
+    <!-- Contact / Appointment (Call) -->
+    <section id="contact" class="section bg-light container">
+        <h2>अपॉइंटमेंट बुक करें</h2>
+        <form id="appointmentForm" class="form">
+            <label>नाम<input type="text" name="name" required></label>
+            <label>ई‑मेल<input type="email" name="email" required></label>
+            <label>तारीख<input type="date" name="date" required></label>
+            <label>समय<input type="time" name="time" required></label>
+
+            <a href="tel:+447883555131" class="btn-primary">+44 7883 555 131 पर कॉल करें</a>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Mr. Driveways – सभी अधिकार सुरक्षित।</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

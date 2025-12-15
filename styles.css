@@ -1,0 +1,50 @@
+/* ---- बेस रीसेट ---- */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;line-height:1.6;color:#333}
+
+/* ---- कंटेनर ---- */
+.container{width:90%;max-width:1200px;margin:auto}
+
+/* ---- नेविगेशन ---- */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+.nav-links{list-style:none;display:flex;gap:1.5rem}
+.logo img{vertical-align:middle}
+
+/* ---- बटन ---- */
+.btn-primary{
+    background:#0066ff;color:#fff;padding:.75rem 1.5rem;
+    border:none;border-radius:4px;cursor:pointer;
+    transition:background .3s;display:inline-block;
+}
+.btn-primary:hover{background:#004fcc}
+
+/* ---- हीरो सेक्शन ---- */
+.hero{
+    background:url('assets/hero.jpg') center/cover no-repeat;
+    color:#fff;text-align:center;padding:6rem 0;
+}
+.hero-content h1{font-size:2.5rem;margin-bottom:.5rem}
+.hero-content p{font-size:1.2rem}
+
+/* ---- सेक्शन ---- */
+.section{padding:4rem 0}
+.bg-light{background:#f9f9f9}
+
+/* ---- कार्ड्स ---- */
+.cards{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
+.card{
+    background:#fff;padding:2rem;border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    flex:1 1 250px;
+}
+
+/* ---- फॉर्म ---- */
+.form{display:grid;gap:1rem;max-width:500px;margin:auto}
+.form label{display:flex;flex-direction:column;font-weight:600}
+.form input,.form select{
+    padding:.5rem;border:1px solid #ccc;
+    border-radius:4px;margin-top:.25rem;
+}
+
+/* ---- फुटर ---- */
+.footer{background:#222;color:#ddd;text-align:center;padding:1rem 0}

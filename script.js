@@ -1,51 +1,24 @@
+// FIXED script.js for Mr. Driveways
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Mr. Driveways website loaded successfully!');
+    console.log('Website loaded');
 
-    // ==================== MOBILE NAVIGATION ====================
+    // ========== MOBILE MENU ==========
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
     
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            // Change hamburger to X and back
-            const icon = this.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
         });
     }
 
-    // Close menu when clicking outside on mobile
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 768) {
-            if (navLinks && navLinks.classList.contains('active') && 
-                !navLinks.contains(event.target) && 
-                !mobileToggle.contains(event.target)) {
-                navLinks.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
-        }
-    });
-
-    // ==================== UPDATED AREA CALCULATOR ====================
-    // FIXED: Now asks for Length (ft) and Width (ft) and calculates Area (sq ft)
+    // ========== AREA CALCULATOR (FIXED) ==========
     const calcButton = document.getElementById('sizeCalculatorBtn');
     const sizeInput = document.getElementById('projectSize');
     const resultDisplay = document.getElementById('sizeResult');
 
     if (calcButton && sizeInput && resultDisplay) {
         calcButton.addEventListener('click', function() {
-            // Ask for Length in feet
             const lengthInput = prompt("Enter LENGTH in feet (ft):");
             if (lengthInput === null) {
                 resultDisplay.textContent = 'Calculation cancelled.';
@@ -53,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Ask for Width in feet
             const widthInput = prompt("Enter WIDTH in feet (ft):");
             if (widthInput === null) {
                 resultDisplay.textContent = 'Calculation cancelled.';
@@ -61,232 +33,80 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Convert to numbers
             const length = parseFloat(lengthInput);
             const width = parseFloat(widthInput);
             
-            // Validate inputs
             if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
-                resultDisplay.textContent = '❌ Invalid input. Please enter positive numbers for length and width.';
+                resultDisplay.textContent = 'Invalid input. Please enter positive numbers.';
                 resultDisplay.style.color = '#dc3545';
-                resultDisplay.style.backgroundColor = '#ffe6e6';
             } else {
-                // Calculate area: Length (ft) × Width (ft) = Area (sq ft)
                 const areaSqFt = (length * width).toFixed(2);
-                resultDisplay.innerHTML = `✅ Area = <strong>${areaSqFt} sq ft</strong><br><small>(Length: ${length} ft × Width: ${width} ft)</small>`;
+                resultDisplay.innerHTML = `Area = <strong>${areaSqFt} sq ft</strong> (${length}ft × ${width}ft)`;
                 resultDisplay.style.color = '#004085';
-                resultDisplay.style.backgroundColor = '#e7f5ff';
-                
-                // Auto-fill the Project Size input field
                 sizeInput.value = areaSqFt;
             }
         });
     }
 
-    // ==================== WHATSAPP QUOTE FUNCTION ====================
+    // ========== WHATSAPP BUTTON (FIXED) ==========
     const whatsappBtn = document.getElementById('whatsappBtn');
+    const quoteForm = document.getElementById('quoteForm');
     
-    if (whatsappBtn) {
+    if (whatsappBtn && quoteForm) {
         whatsappBtn.addEventListener('click', function() {
-            const form = document.getElementById('quoteForm');
-            
-            // Check form validity
-            if (!form.checkValidity()) {
-                // Highlight invalid fields
-                const invalidInputs = form.querySelectorAll(':invalid');
-                invalidInputs.forEach(input => {
-                    input.style.borderColor = '#dc3545';
-                    input.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
-                    
-                    // Remove highlight after 3 seconds
-                    setTimeout(() => {
-                        input.style.borderColor = '';
-                        input.style.boxShadow = '';
-                    }, 3000);
-                });
-                
-                // Show alert and focus on first invalid field
-                alert('Please fill all required fields (*).');
-                if (invalidInputs.length > 0) {
-                    invalidInputs[0].focus();
-                }
+            if (!quoteForm.checkValidity()) {
+                alert('Please fill all required fields (*)');
+                quoteForm.reportValidity();
                 return;
             }
 
-            // Collect form data
             const formData = {
-                name: form.querySelector('[name="name"]').value,
-                phone: form.querySelector('[name="phone"]').value,
-                service: form.querySelector('[name="serviceType"]').value,
-                postcode: form.querySelector('[name="postcode"]').value,
-                size: form.querySelector('[name="size"]').value || 'Not provided',
-                email: form.querySelector('[name="email"]').value || 'Not provided',
-                description: form.querySelector('[name="description"]').value || 'Not provided'
+                name: quoteForm.querySelector('[name="name"]').value,
+                phone: quoteForm.querySelector('[name="phone"]').value,
+                service: quoteForm.querySelector('[name="serviceType"]').value,
+                postcode: quoteForm.querySelector('[name="postcode"]').value,
+                size: quoteForm.querySelector('[name="size"]').value || 'Not provided',
+                email: quoteForm.querySelector('[name="email"]').value || 'Not provided'
             };
 
-            // Map service values to readable names
             const serviceNames = {
                 'driveway': 'New Driveway',
-                'fencing': 'Fencing / Boundary Wall',
-                'sealing': 'Driveway Sealing & Cleaning',
+                'fencing': 'Fencing',
+                'sealing': 'Sealing & Cleaning',
                 'repair': 'Repair & Refinish',
                 'other': 'Other Work'
             };
 
-            // Build WhatsApp message
-            const message = `*🚗 Mr. Driveways - FREE Quote Request*` + `\n` +
-                           `📅 ${new Date().toLocaleDateString('en-GB')}` + `\n\n` +
-                           `*Customer Details:*` + `\n` +
-                           `• Name: ${formData.name}` + `\n` +
-                           `• Phone: ${formData.phone}` + `\n` +
-                           `• Postcode: ${formData.postcode}` + `\n` +
-                           (formData.email !== 'Not provided' ? `• Email: ${formData.email}\n` : '') + `\n` +
-                           `*Project Details:*` + `\n` +
-                           `• Service: ${serviceNames[formData.service] || formData.service}` + `\n` +
-                           `• Area: ${formData.size} sq ft` + `\n` +
-                           (formData.description !== 'Not provided' ? `• Notes: ${formData.description.substring(0, 100)}${formData.description.length > 100 ? '...' : ''}\n` : '') + `\n` +
-                           `📍 Birmingham Area` + `\n` +
-                           `_This message was sent from the Mr. Driveways website._`;
+            const message = `*Mr. Driveways - Quote Request*\n\n` +
+                           `Name: ${formData.name}\n` +
+                           `Phone: ${formData.phone}\n` +
+                           `Service: ${serviceNames[formData.service] || formData.service}\n` +
+                           `Area: ${formData.size} sq ft\n` +
+                           `Postcode: ${formData.postcode}\n` +
+                           `Email: ${formData.email}\n` +
+                           `Location: Birmingham`;
 
-            // Encode message for URL
             const encodedMsg = encodeURIComponent(message);
-            const phoneNumber = '447883555131'; // Your WhatsApp number
-            
-            // Open WhatsApp
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedMsg}`, '_blank');
-            
-            // Optional: Show confirmation
-            setTimeout(() => {
-                alert('WhatsApp opened! If the app didn\'t open, please check that WhatsApp is installed on your device.');
-            }, 500);
+            window.open(`https://wa.me/447883555131?text=${encodedMsg}`, '_blank');
         });
     }
 
-    // ==================== FORM SUBMISSION ====================
-    const quoteForm = document.getElementById('quoteForm');
-    
+    // ========== FORM SUBMIT (FIXED) ==========
     if (quoteForm) {
         quoteForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simple form validation
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#dc3545';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#28a745';
-                }
-            });
-            
-            if (!isValid) {
-                alert('Please fill all required fields.');
+            if (!this.checkValidity()) {
+                alert('Please fill all required fields');
                 return;
             }
             
-            // Show success message
             const name = this.querySelector('[name="name"]').value;
-            alert(`Thank you ${name}! Your FREE quote request has been submitted. We'll contact you within 24 hours.`);
+            alert(`Thank you ${name}! Your quote request has been submitted. We will contact you within 24 hours.`);
             
-            // Optional: Reset form after successful submission
+            // Optional: Reset form
             // this.reset();
             // if (resultDisplay) resultDisplay.textContent = '';
-            
-            // In a real application, you would send data to your server here
-            // Example using fetch():
-            /*
-            const formData = new FormData(this);
-            fetch('/api/submit-quote', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Quote request submitted successfully!');
-                this.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your request. Please try again.');
-            });
-            */
         });
     }
-
-    // ==================== SMOOTH SCROLLING ====================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    const icon = mobileToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                    document.body.style.overflow = '';
-                }
-                
-                // Calculate scroll position
-                const navHeight = document.querySelector('.nav').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navHeight - 20;
-                
-                // Smooth scroll
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // ==================== FORM INPUT VALIDATION STYLING ====================
-    const formInputs = document.querySelectorAll('#quoteForm input, #quoteForm select, #quoteForm textarea');
-    
-    formInputs.forEach(input => {
-        // Add focus/blur styling
-        input.addEventListener('focus', function() {
-            this.style.borderColor = '#0066ff';
-            this.style.boxShadow = '0 0 0 3px rgba(0, 102, 255, 0.1)';
-        });
-        
-        input.addEventListener('blur', function() {
-            if (this.value.trim() === '' && this.hasAttribute('required')) {
-                this.style.borderColor = '#dc3545';
-                this.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
-            } else if (this.value.trim() !== '') {
-                this.style.borderColor = '#28a745';
-                this.style.boxShadow = '0 0 0 3px rgba(40, 167, 69, 0.1)';
-            } else {
-                this.style.borderColor = '';
-                this.style.boxShadow = '';
-            }
-        });
-        
-        // Real-time validation for number input
-        if (input.type === 'number' && input.id === 'projectSize') {
-            input.addEventListener('input', function() {
-                const value = parseFloat(this.value);
-                if (isNaN(value) || value < 0) {
-                    this.style.borderColor = '#dc3545';
-                } else {
-                    this.style.borderColor = '#28a745';
-                }
-            });
-        }
-    });
-
-    // ==================== INITIALIZATION MESSAGE ====================
-    console.log('All features initialized: Mobile menu, Area calculator, WhatsApp button, Form validation');
 });

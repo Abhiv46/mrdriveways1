@@ -1,56 +1,122 @@
-:root {
-    --primary: #2a5ca9;
-    --primary-dark: #1e4480;
-    --secondary: #e9a33a;
-    --dark: #222222;
-    --gray: #777777;
-    --gray-light: #f5f5f5;
-    --white: #ffffff;
+/* -------------------------------------------------
+   Global styles – modern, clean, responsive
+------------------------------------------------- */
+
+/* ---- Reset & base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { 
+  scroll-behavior: smooth; 
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+  color: #1a1a1a;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0066ff, #0099ff);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
 }
 
 /* ---- HERO SECTION with YOUR IMAGE ---- */
 .hero {
-    position: relative;
-    /* YAHAN APNI IMAGE KA PATH DALEN: */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('assets/IMGP0902.jpg') center/cover no-repeat;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  position: relative;
+  /* YAHAN APNI IMAGE KA PATH DALEN: */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('assets/IMGP0902.jpg') center/cover no-repeat;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+/* CSS ka background-image property images set karne ke liye istemal hota hai[citation:6]. */
 
 /* ---- AREA CALCULATOR BUTTON STYLE ---- */
 .calc-btn {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #f0f8ff;
-    border: 1px solid #b6d4fe;
-    border-radius: 6px;
-    color: #004085;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #f0f8ff;
+  border: 1px solid #b6d4fe;
+  border-radius: 6px;
+  color: #004085;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .calc-btn:hover {
-    background-color: #d0e7ff;
+  background-color: #d0e7ff;
 }
 
 #sizeResult {
-    display: block;
-    margin-top: 10px;
-    padding: 8px;
-    background-color: #e7f5ff;
-    border-radius: 4px;
-    font-weight: 600;
-    color: #004085;
-    text-align: center;
+  display: block;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #e7f5ff;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #004085;
+  text-align: center;
 }
 
-/* Baaki ka purana CSS sab yahin rahega... */
+/* Baaki ka purana CSS sab yahin rahega (Navigation, Cards, Footer wagairah) */
+/* -------------------------------------------------
+   Agar aapke paas purani CSS file hai, toh sirf upar ke naye hisse 
+   usme add kar dein. Agar puri nayi file chahiye, toh pura code dediye 
+   gaye 'styles.css' file mein daal dein.
+------------------------------------------------- */

@@ -2,122 +2,992 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Mr. Driveways – Concrete Driveway Experts</title>
+    <title>Mr. Driveways – Premium Concrete Driveway Solutions</title>
+    <meta name="description" content="Professional concrete driveway installation, repair, and finishing services with 100% satisfaction guarantee.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a5ca9;
+            --primary-dark: #1e4480;
+            --secondary: #e9a33a;
+            --accent: #c92121;
+            --dark: #222222;
+            --gray-dark: #444444;
+            --gray: #777777;
+            --gray-light: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.12);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bg-light {
+            background-color: var(--gray-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d8922e;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 40px 0 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+        }
+
+        .hero-features {
+            display: flex;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+        }
+
+        .feature i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        /* ==================== TIKTOK GALLERY ==================== */
+        .tiktok-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tiktok-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tiktok-embed {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: var(--gray-light);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tiktok-embed:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tiktok-embed section {
+            font-style: italic;
+            color: var(--gray);
+            padding: 20px;
+        }
+
+        .tiktok-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .tiktok-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .tiktok-link i {
+            margin-right: 8px;
+        }
+
+        /* ==================== SERVICES ==================== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* ==================== QUOTE FORM ==================== */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 50px;
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .form label {
+            display: block;
+        }
+
+        .form label span {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form input,
+        .form select,
+        .form textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form input:focus,
+        .form select:focus,
+        .form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 92, 169, 0.1);
+        }
+
+        .form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-buttons {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        /* ==================== CONTACT ==================== */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 100px 30px 30px;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 0 0 20px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .feature {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .tiktok-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header / Hero -->
+    <!-- ==================== HERO ==================== -->
     <header class="hero">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Mr. Driveways Logo" height="40">
+                <!-- Placeholder for logo - in production replace with actual logo -->
+                <div class="logo-img" style="background-color: white; border-radius: 5px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #2a5ca9; font-weight: 800; font-size: 1.2rem;">MD</span>
+                </div>
+                <span>Mr. Driveways</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#services">सेवाएँ</a></li>
-                <li><a href="#quote">कोट प्राप्त करें</a></li>
-                <li><a href="#contact">संपर्क</a></li>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tiktok">Our Work</a></li>
+                <li><a href="#quote">Get Quote</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
         <div class="hero-content container">
-            <h1>बेहतर कंक्रीट ड्राइववे<br>आपके घर के लिए</h1>
-            <p>टिकाऊ, सुंदर और तेज़ इंस्टॉलेशन।</p>
-            <a href="#quote" class="btn-primary">कोट माँगें</a>
+            <h1>Premium Concrete Driveways For Your Home</h1>
+            <p class="hero-sub">Durable, beautiful, professionally installed driveways with a 100% satisfaction guarantee. We transform your exterior with precision and care.</p>
+            <a href="#quote" class="btn-primary btn" style="padding: 16px 35px; font-size: 1.1rem;">
+                <i class="fas fa-calendar-alt" style="margin-right: 10px;"></i>Request Free Quote
+            </a>
+            
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>10-Year Warranty</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>Fast Installation</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <span>Premium Materials</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- TikTok वीडियो गैलरी -->
+    <!-- ==================== TIKTOK GALLERY ==================== -->
     <section id="tiktok" class="section container">
-        <h2>हमारी TikTok फ़ीड</h2>
+        <div class="tiktok-header">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 0;">Our Recent Projects</h2>
+            <a href="https://www.tiktok.com/@mr.driveways" target="_blank" class="tiktok-link">
+                <i class="fab fa-tiktok"></i> Follow us on TikTok
+            </a>
+        </div>
+        
+        <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">
+            See our craftsmanship in action. We share behind-the-scenes, completed projects, and driveway transformations.
+        </p>
 
-        <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@mr.driveways/video/7575088020613909782"
-            data-video-id="7575088020613909782"
-            style="max-width:605px;min-width:325px;">
-            <section>Loading…</section>
-        </blockquote>
-
-        <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@mr.driveways/video/7577480190612229398"
-            data-video-id="7577480190612229398"
-            style="max-width:605px;min-width:325px;">
-            <section>Loading…</section>
-        </blockquote>
-
-        <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@mr.driveways/video/7575629470640508182"
-            data-video-id="7575629470640508182"
-            style="max-width:605px;min-width:325px;">
-            <section>Loading…</section>
-        </blockquote>
-
-        <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@mr.driveways/video/7569938086126308630"
-            data-video-id="7569938086126308630"
-            style="max-width:605px;min-width:325px;">
-            <section>Loading…</section>
-        </blockquote>
-
-        <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@mr.driveways/video/7569682641276914966"
-            data-video-id="7569682641276914966"
-            style="max-width:605px;min-width:325px;">
-            <section>Loading…</section>
-        </blockquote>
-
-        <script async src="https://www.tiktok.com/embed.js"></script>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="section bg-light container">
-        <h2>हमारी सेवाएँ</h2>
-        <div class="cards">
-            <article class="card"><h3>कस्टम ड्राइववे प्रिंट</h3><p>रंग, पैटर्न और टेक्सचर में पूरी लचीलापन।</p></article>
-            <article class="card"><h3>पैटियो & वॉकवे</h3><p>बाग‑बगीचे के साथ सहज मिलान।</p></article>
-            <article class="card"><h3>मरम्मत & रीफ़िनिश</h3><p>दरारें ठीक करें, पुरानी सतह को नया रूप दें।</p></article>
+        <div class="tiktok-grid">
+            <!-- TikTok Embeds will load here -->
+            <div class="tiktok-embed">
+                <section>
+                    <i class="fab fa-tiktok" style="font-size: 3rem; margin-bottom: 20px; color: #ddd;"></i>
+                    <p>TikTok video loading...<br>Modern geometric pattern driveway</p>
+                </section>
+            </div>
+            
+            <div class="tiktok-embed">
+                <section>
+                    <i class="fab fa-tiktok" style="font-size: 3rem; margin-bottom: 20px; color: #ddd;"></i>
+                    <p>TikTok video loading...<br>Custom stamped concrete installation</p>
+                </section>
+            </div>
+            
+            <div class="tiktok-embed">
+                <section>
+                    <i class="fab fa-tiktok" style="font-size: 3rem; margin-bottom: 20px; color: #ddd;"></i>
+                    <p>TikTok video loading...<br>Driveway repair & refinishing process</p>
+                </section>
+            </div>
         </div>
     </section>
 
-    <!-- Quote Form (WhatsApp) -->
-    <section id="quote" class="section container">
-        <h2>फ़्री कोट प्राप्त करें</h2>
-        <form id="quoteForm" class="form">
-            <label>नाम<input type="text" name="name" required></label>
-            <label>ई‑मेल<input type="email" name="email" required></label>
-            <label>फ़ोन<input type="tel" name="phone" required></label>
-            <label>प्रोजेक्ट आकार (sq ft)<input type="number" name="size" min="0" required></label>
-            <label>पैटर्न<select name="pattern">
-                <option value="plain">सादा</option>
-                <option value="geometric">ज्यामितीय</option>
-                <option value="custom">कस्टम</option>
-            </select></label>
-
-            <button type="button" id="whatsappBtn" class="btn-primary">
-                WhatsApp पर भेजें
-            </button>
-        </form>
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <p style="text-align: center; margin-bottom: 60px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">
+                From initial design to final installation, we provide comprehensive concrete solutions that enhance your property's value and curb appeal.
+            </p>
+            
+            <div class="cards">
+                <article class="card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Custom Driveway Prints</h3>
+                    <p>Full control over colour, pattern, and texture. Create a unique driveway that complements your home's architecture.</p>
+                    <a href="#quote" class="btn-secondary btn" style="margin-top: 10px;">Get Quote</a>
+                </article>
+                <article class="card">
+                    <i class="fas fa-home"></i>
+                    <h3>Patios & Walkways</h3>
+                    <p>Seamless integration with your landscape. We design outdoor spaces that are both functional and beautiful.</p>
+                    <a href="#quote" class="btn-secondary btn" style="margin-top: 10px;">Get Quote</a>
+                </article>
+                <article class="card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Repair & Refinish</h3>
+                    <p>Fix cracks, renew old surfaces with precision. Restore your driveway to like-new condition.</p>
+                    <a href="#quote" class="btn-secondary btn" style="margin-top: 10px;">Get Quote</a>
+                </article>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact / Appointment (Call) -->
-    <section id="contact" class="section bg-light container">
-        <h2>अपॉइंटमेंट बुक करें</h2>
-        <form id="appointmentForm" class="form">
-            <label>नाम<input type="text" name="name" required></label>
-            <label>ई‑मेल<input type="email" name="email" required></label>
-            <label>तारीख<input type="date" name="date" required></label>
-            <label>समय<input type="time" name="time" required></label>
+    <!-- ==================== QUOTE FORM ==================== -->
+    <section id="quote" class="section">
+        <div class="container">
+            <h2 class="section-title">Get a Free Quote</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Provide your project details and we'll get back to you with a personalized quote within 24 hours.
+            </p>
+            
+            <div class="form-container">
+                <form id="quoteForm" class="form">
+                    <label class="form-full">
+                        <span>Project Description</span>
+                        <textarea name="description" placeholder="Tell us about your driveway project..." required></textarea>
+                    </label>
+                    
+                    <label>
+                        <span>Name *</span>
+                        <input type="text" name="name" placeholder="Your full name" required>
+                    </label>
+                    
+                    <label>
+                        <span>Email *</span>
+                        <input type="email" name="email" placeholder="Your email address" required>
+                    </label>
+                    
+                    <label>
+                        <span>Phone *</span>
+                        <input type="tel" name="phone" placeholder="Your phone number" required>
+                    </label>
+                    
+                    <label>
+                        <span>Postcode *</span>
+                        <input type="text" name="postcode" placeholder="Your postcode" required>
+                    </label>
+                    
+                    <label>
+                        <span>Project Size (sq ft) *</span>
+                        <input type="number" name="size" min="0" placeholder="Approximate area" required>
+                    </label>
+                    
+                    <label>
+                        <span>Pattern Preference</span>
+                        <select name="pattern">
+                            <option value="plain">Plain Concrete</option>
+                            <option value="geometric">Geometric Pattern</option>
+                            <option value="stamped">Stamped Concrete</option>
+                            <option value="exposed">Exposed Aggregate</option>
+                            <option value="custom">Custom Design</option>
+                        </select>
+                    </label>
+                    
+                    <label>
+                        <span>Timeline</span>
+                        <select name="timeline">
+                            <option value="asap">As Soon As Possible</option>
+                            <option value="1month">Within 1 Month</option>
+                            <option value="3months">Within 3 Months</option>
+                            <option value="flexible">Flexible Timeline</option>
+                        </select>
+                    </label>
 
-            <a href="tel:+447883555131" class="btn-primary">+44 7883 555 131 पर कॉल करें</a>
-        </form>
+                    <div class="form-buttons form-full">
+                        <button type="submit" class="btn-primary btn">
+                            <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>Submit Quote Request
+                        </button>
+                        <button type="button" id="whatsappBtn" class="btn-secondary btn">
+                            <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>Send via WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
 
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p style="text-align: center; margin-bottom: 60px; color: var(--gray); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Get in touch with our team to discuss your project, schedule a consultation, or request a site visit.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+447883555131">+44 7883 555 131</a></p>
+                    <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">Mon-Fri: 8am-6pm</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@mrdriveways.com">info@mrdriveways.com</a></p>
+                    <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Service Area</h3>
+                    <p>Greater London & Surrounding Areas</p>
+                    <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">Free consultations within 30 miles</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="tel:+447883555131" class="btn-primary btn" style="padding: 16px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-phone-alt" style="margin-right: 10px;"></i>Call Now for Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <p>&copy; 2025 Mr. Driveways – सभी अधिकार सुरक्षित।</p>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Mr. Driveways</div>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">
+                        Professional concrete driveway installation, repair, and finishing services with 100% satisfaction guarantee.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.tiktok.com/@mr.driveways" target="_blank" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#tiktok">Our Work</a></li>
+                        <li><a href="#quote">Get Quote</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Driveway Installation</a></li>
+                        <li><a href="#services">Patios & Walkways</a></li>
+                        <li><a href="#services">Repair & Refinishing</a></li>
+                        <li><a href="#services">Custom Patterns</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone" style="margin-right: 8px;"></i> +44 7883 555 131</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@mrdriveways.com</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> London, UK</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Mr. Driveways. All rights reserved.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Professional concrete driveway specialists</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Quote form submission
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.phone) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // In a real application, you would send this to a server
+            // For now, we'll show a success message
+            alert('Thank you, ' + data.name + '! Your quote request has been submitted. We will contact you within 24 hours.');
+            this.reset();
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Validate required fields
+            if (!data.name || !data.phone) {
+                alert('Please provide at least your name and phone number to use WhatsApp.');
+                return;
+            }
+            
+            // Create WhatsApp message
+            let message = `Hello, I'm interested in a driveway quote.\n\n`;
+            message += `Name: ${data.name}\n`;
+            message += `Phone: ${data.phone}\n`;
+            if (data.email) message += `Email: ${data.email}\n`;
+            if (data.postcode) message += `Postcode: ${data.postcode}\n`;
+            if (data.size) message += `Project Size: ${data.size} sq ft\n`;
+            if (data.pattern) message += `Pattern: ${data.pattern}\n`;
+            if (data.description) message += `Description: ${data.description}\n`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = '447883555131'; // Your WhatsApp number
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set minimum date for appointment to today
+        const today = new Date().toISOString().split('T')[0];
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        dateInputs.forEach(input => {
+            input.min = today;
+        });
+    </script>
 </body>
 </html>
